@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guardião Digital · Classificação + Bloqueio</title>
+  <title>Guardião Digital · IA Assistente</title>
+  <meta name="description" content="Plataforma de controle parental com assistente IA para ajudar os pais a protegerem seus filhos no ambiente digital.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    /* ===== RESET & BASE ===== */
     * {
       margin: 0;
       padding: 0;
@@ -25,7 +28,7 @@
     }
 
     .container {
-      max-width: 950px;
+      max-width: 980px;
       width: 100%;
       background: #eef6fd;
       background: linear-gradient(145deg, #eef6fd 0%, #d6e6f5 100%);
@@ -37,13 +40,8 @@
     }
 
     /* ===== LOGIN ===== */
-    .login-area {
-      display: block;
-    }
-
-    .login-area.hidden {
-      display: none;
-    }
+    .login-area { display: block; }
+    .login-area.hidden { display: none; }
 
     .logo-area {
       display: flex;
@@ -54,7 +52,7 @@
     }
 
     .logo-area i {
-      font-size: 2.6rem;
+      font-size: 2.8rem;
       color: #1a4f78;
       background: white;
       padding: 0.5rem;
@@ -63,7 +61,7 @@
     }
 
     .logo-area h1 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: 800;
       background: linear-gradient(135deg, #0b3857, #1f6d9e);
       -webkit-background-clip: text;
@@ -82,10 +80,7 @@
       padding-bottom: 0.8rem;
     }
 
-    .subtitulo i {
-      margin-right: 0.4rem;
-      color: #ca9f2b;
-    }
+    .subtitulo i { margin-right: 0.4rem; color: #ca9f2b; }
 
     .step-indicator {
       display: flex;
@@ -111,9 +106,7 @@
       box-shadow: 0 2px 0 #0d3149;
     }
 
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
+    .form-group { margin-bottom: 1.2rem; }
 
     .input-group {
       display: flex;
@@ -168,9 +161,7 @@
       margin-right: 0.2rem;
     }
 
-    .input-group .btn-aux:hover {
-      background: #c7dcee;
-    }
+    .input-group .btn-aux:hover { background: #c7dcee; }
 
     .btn-azul {
       background: #1a5b84;
@@ -222,15 +213,8 @@
       box-shadow: 0 3px 0 #0a2639;
     }
 
-    .btn-gov:hover {
-      background: #1f5f83;
-      transform: scale(1.01);
-    }
-
-    .btn-gov:active {
-      transform: translateY(3px);
-      box-shadow: 0 1px 0 #0a2639;
-    }
+    .btn-gov:hover { background: #1f5f83; transform: scale(1.01); }
+    .btn-gov:active { transform: translateY(3px); box-shadow: 0 1px 0 #0a2639; }
 
     .divider {
       display: flex;
@@ -241,11 +225,7 @@
       font-weight: 500;
     }
 
-    .divider hr {
-      flex: 1;
-      border: none;
-      border-top: 2px dashed #b0cfe3;
-    }
+    .divider hr { flex: 1; border: none; border-top: 2px dashed #b0cfe3; }
 
     .codigo-area {
       background: #dce8f3;
@@ -260,10 +240,7 @@
       border: 1px solid #7dafd1;
     }
 
-    .codigo-area span {
-      font-weight: 600;
-      color: #0b3857;
-    }
+    .codigo-area span { font-weight: 600; color: #0b3857; }
 
     .codigo-area .btn-enviar {
       background: #1a5b84;
@@ -277,9 +254,7 @@
       transition: 0.15s;
     }
 
-    .codigo-area .btn-enviar:hover {
-      background: #2773a3;
-    }
+    .codigo-area .btn-enviar:hover { background: #2773a3; }
 
     .erro-msg {
       color: #b13e3e;
@@ -292,18 +267,11 @@
       display: none;
     }
 
-    .erro-msg.visible {
-      display: block;
-    }
+    .erro-msg.visible { display: block; }
 
     /* ===== PAINEL PARENTAL ===== */
-    .painel-area {
-      display: none;
-    }
-
-    .painel-area.visible {
-      display: block;
-    }
+    .painel-area { display: none; }
+    .painel-area.visible { display: block; }
 
     .header-painel {
       display: flex;
@@ -328,10 +296,226 @@
       gap: 0.4rem;
     }
 
-    .badge-seguro i {
-      color: #f5d742;
+    .badge-seguro i { color: #f5d742; }
+
+    /* ===== IA ASSISTENTE ===== */
+    .ia-assistente {
+      background: linear-gradient(135deg, #1a4f78, #2a7ab3);
+      border-radius: 2rem;
+      padding: 1.2rem 1.8rem;
+      margin-bottom: 1.5rem;
+      border: 2px solid #f5c542;
+      box-shadow: 0 4px 15px rgba(26, 91, 132, 0.3);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
 
+    .ia-assistente .ia-info {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: white;
+    }
+
+    .ia-assistente .ia-info i {
+      font-size: 2.2rem;
+      background: rgba(255,255,255,0.2);
+      padding: 0.5rem;
+      border-radius: 60%;
+      animation: pulse-ia 2s infinite;
+    }
+
+    @keyframes pulse-ia {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .ia-assistente .ia-info h4 {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .ia-assistente .ia-info p {
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
+    .ia-assistente .ia-chat-toggle {
+      background: white;
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 60px;
+      font-weight: 700;
+      color: #1a4f78;
+      cursor: pointer;
+      transition: 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid #f5c542;
+    }
+
+    .ia-assistente .ia-chat-toggle:hover {
+      background: #f5faff;
+      transform: scale(1.02);
+    }
+
+    /* Chat da IA */
+    .ia-chat-container {
+      background: white;
+      border-radius: 1.5rem;
+      border: 2px solid #7dafd1;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      display: none;
+      max-height: 450px;
+      flex-direction: column;
+    }
+
+    .ia-chat-container.ativo {
+      display: flex;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .ia-chat-header {
+      background: linear-gradient(135deg, #0b3857, #1a5b84);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ia-chat-header h5 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .ia-chat-header .fechar-chat {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+    .ia-chat-header .fechar-chat:hover { opacity: 1; }
+
+    .ia-chat-messages {
+      padding: 1rem 1.5rem;
+      max-height: 280px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      background: #f8fbff;
+    }
+
+    .ia-msg {
+      max-width: 85%;
+      padding: 0.7rem 1.2rem;
+      border-radius: 1.2rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .ia-msg.bot {
+      background: #e9f2fa;
+      color: #0b3857;
+      align-self: flex-start;
+      border-bottom-left-radius: 0.3rem;
+      border: 1px solid #d0e0ed;
+    }
+
+    .ia-msg.user {
+      background: #1a5b84;
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 0.3rem;
+    }
+
+    .ia-msg .msg-time {
+      font-size: 0.6rem;
+      opacity: 0.6;
+      margin-top: 0.2rem;
+      display: block;
+    }
+
+    .ia-chat-input {
+      display: flex;
+      padding: 0.8rem 1.2rem;
+      border-top: 1px solid #d0e0ed;
+      background: #f5faff;
+      gap: 0.5rem;
+    }
+
+    .ia-chat-input input {
+      flex: 1;
+      border: 1px solid #b0cfe3;
+      border-radius: 60px;
+      padding: 0.6rem 1.2rem;
+      outline: none;
+      font-size: 0.9rem;
+    }
+
+    .ia-chat-input input:focus {
+      border-color: #f5c542;
+      box-shadow: 0 0 0 3px rgba(245, 197, 66, 0.2);
+    }
+
+    .ia-chat-input button {
+      background: #1a5b84;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.15s;
+      border: 1px solid #f5c542;
+    }
+
+    .ia-chat-input button:hover { background: #2773a3; }
+
+    .ia-sugestoes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      padding: 0.3rem 1.2rem 0.8rem;
+      background: #f5faff;
+      border-top: 1px solid #e0eaf2;
+    }
+
+    .ia-sugestoes button {
+      background: #e9f2fa;
+      border: 1px solid #b0cfe3;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      color: #1a4a6a;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .ia-sugestoes button:hover {
+      background: #d0e0ed;
+      border-color: #7dafd1;
+    }
+
+    /* ===== INFO CARDS ===== */
     .info-card {
       background: white;
       border-radius: 2rem;
@@ -350,9 +534,7 @@
       margin-bottom: 0.8rem;
     }
 
-    .info-card h3 i {
-      color: #ca9f2b;
-    }
+    .info-card h3 i { color: #ca9f2b; }
 
     .grid-2col {
       display: grid;
@@ -427,9 +609,7 @@
       box-shadow: 0 3px 0 #6f8fa8;
     }
 
-    .btn-acao.secundario:hover {
-      background: #c5dcee;
-    }
+    .btn-acao.secundario:hover { background: #c5dcee; }
 
     .btn-acao.verde {
       background: #1e7e34;
@@ -437,9 +617,7 @@
       box-shadow: 0 3px 0 #0f4f1f;
     }
 
-    .btn-acao.verde:hover {
-      background: #2a9d47;
-    }
+    .btn-acao.verde:hover { background: #2a9d47; }
 
     .btn-acao.vermelho {
       background: #b13e3e;
@@ -447,11 +625,9 @@
       box-shadow: 0 3px 0 #6f2020;
     }
 
-    .btn-acao.vermelho:hover {
-      background: #c94a4a;
-    }
+    .btn-acao.vermelho:hover { background: #c94a4a; }
 
-    /* Filho item com monitoramento */
+    /* Filho item */
     .filho-item {
       background: #e9f2fa;
       border-radius: 1.5rem;
@@ -507,27 +683,11 @@
       white-space: nowrap;
     }
 
-    .status.conectado {
-      background: #1e7e34;
-      color: white;
-    }
+    .status.conectado { background: #1e7e34; color: white; }
+    .status.desconectado { background: #b0b0b0; color: #333; }
+    .status.pendente { background: #f5c542; color: #1a3b55; }
+    .status.bloqueado { background: #b13e3e; color: white; }
 
-    .status.desconectado {
-      background: #b0b0b0;
-      color: #333;
-    }
-
-    .status.pendente {
-      background: #f5c542;
-      color: #1a3b55;
-    }
-
-    .status.bloqueado {
-      background: #b13e3e;
-      color: white;
-    }
-
-    /* Classificação indicativa */
     .classificacao-badge {
       display: inline-flex;
       align-items: center;
@@ -538,42 +698,14 @@
       font-size: 0.7rem;
     }
 
-    .classificacao-livre {
-      background: #4caf50;
-      color: white;
-    }
+    .classificacao-livre { background: #4caf50; color: white; }
+    .classificacao-10 { background: #8bc34a; color: #1a3b55; }
+    .classificacao-12 { background: #ffeb3b; color: #1a3b55; }
+    .classificacao-14 { background: #ff9800; color: white; }
+    .classificacao-16 { background: #f44336; color: white; }
+    .classificacao-18 { background: #9c27b0; color: white; }
+    .classificacao-restrito { background: #b13e3e; color: white; }
 
-    .classificacao-10 {
-      background: #8bc34a;
-      color: #1a3b55;
-    }
-
-    .classificacao-12 {
-      background: #ffeb3b;
-      color: #1a3b55;
-    }
-
-    .classificacao-14 {
-      background: #ff9800;
-      color: white;
-    }
-
-    .classificacao-16 {
-      background: #f44336;
-      color: white;
-    }
-
-    .classificacao-18 {
-      background: #9c27b0;
-      color: white;
-    }
-
-    .classificacao-restrito {
-      background: #b13e3e;
-      color: white;
-    }
-
-    /* Monitoramento dados */
     .monitoramento-dados {
       width: 100%;
       margin-top: 0.5rem;
@@ -596,11 +728,7 @@
       border: 1px solid #d0e0ed;
     }
 
-    .monitoramento-dados i {
-      color: #1a5b84;
-      font-size: 0.85rem;
-    }
-
+    .monitoramento-dados i { color: #1a5b84; font-size: 0.85rem; }
     .monitoramento-dados .dado-destaque {
       background: #dce8f3;
       font-weight: 600;
@@ -613,60 +741,34 @@
       padding: 0.1rem 0.6rem;
       border-radius: 20px;
       font-size: 0.7rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      flex-wrap: wrap;
     }
 
     .btn-pequeno {
       background: #1a5b84;
       border: none;
-      padding: 0.25rem 0.9rem;
+      padding: 0.2rem 0.8rem;
       border-radius: 40px;
       color: white;
       font-weight: 600;
       cursor: pointer;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       border: 1px solid #f5c542;
       transition: 0.15s;
     }
 
-    .btn-pequeno:hover {
-      background: #2773a3;
-    }
-
-    .btn-pequeno.danger {
-      background: #b13e3e;
-      border-color: #8b2f2f;
-    }
-
-    .btn-pequeno.danger:hover {
-      background: #c94a4a;
-    }
-
-    .btn-pequeno.verde {
-      background: #1e7e34;
-      border-color: #4caf50;
-    }
-
-    .btn-pequeno.verde:hover {
-      background: #2a9d47;
-    }
-
-    .btn-pequeno.bloqueio {
-      background: #ff9800;
-      border-color: #e68900;
-    }
-
-    .btn-pequeno.bloqueio:hover {
-      background: #ffab2e;
-    }
-
-    .btn-pequeno.liberar {
-      background: #4caf50;
-      border-color: #388e3c;
-    }
-
-    .btn-pequeno.liberar:hover {
-      background: #66bb6a;
-    }
+    .btn-pequeno:hover { background: #2773a3; }
+    .btn-pequeno.danger { background: #b13e3e; border-color: #8b2f2f; }
+    .btn-pequeno.danger:hover { background: #c94a4a; }
+    .btn-pequeno.verde { background: #1e7e34; border-color: #4caf50; }
+    .btn-pequeno.verde:hover { background: #2a9d47; }
+    .btn-pequeno.bloqueio { background: #ff9800; border-color: #e68900; }
+    .btn-pequeno.bloqueio:hover { background: #ffab2e; }
+    .btn-pequeno.liberar { background: #4caf50; border-color: #388e3c; }
+    .btn-pequeno.liberar:hover { background: #66bb6a; }
 
     /* Modal */
     .modal-overlay {
@@ -680,9 +782,7 @@
       z-index: 999;
     }
 
-    .modal-overlay.ativo {
-      display: flex;
-    }
+    .modal-overlay.ativo { display: flex; }
 
     .modal-box {
       background: #eef6fd;
@@ -734,9 +834,7 @@
       cursor: pointer;
     }
 
-    .footer-painel a:hover {
-      text-decoration: underline;
-    }
+    .footer-painel a:hover { text-decoration: underline; }
 
     .feedback-msg {
       margin-top: 0.5rem;
@@ -745,27 +843,32 @@
       display: none;
     }
 
-    .feedback-msg.visible {
-      display: block;
-    }
+    .feedback-msg.visible { display: block; }
+    .feedback-msg.erro { color: #b13e3e; }
 
-    .feedback-msg.erro {
-      color: #b13e3e;
-    }
-
+    /* ===== RESPONSIVO ===== */
     @media (max-width: 600px) {
       .grid-2col { grid-template-columns: 1fr; }
       .container { padding: 1.5rem; }
       .header-painel { flex-direction: column; align-items: stretch; gap: 0.6rem; }
       .filho-item { flex-direction: column; align-items: stretch; gap: 0.4rem; }
       .monitoramento-dados { gap: 0.4rem; }
+      .logo-area h1 { font-size: 1.6rem; }
+      .ia-assistente { flex-direction: column; align-items: stretch; text-align: center; }
+      .ia-assistente .ia-chat-toggle { justify-content: center; }
     }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #d6e6f5; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb { background: #1a5b84; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #2773a3; }
   </style>
 </head>
 <body>
 
 <div class="container" id="appContainer">
- 
+  
   <!-- ===== TELA DE LOGIN ===== -->
   <div id="loginArea" class="login-area">
     <div class="logo-area">
@@ -786,7 +889,7 @@
       <div class="form-group">
         <div class="input-group">
           <i class="fas fa-envelope"></i>
-          <input type="text" id="emailCpfInput" placeholder="E-mail ou CPF cadastrado" value="pai@exemplo.com">
+          <input type="text" id="emailCpfInput" placeholder="E-mail ou CPF cadastrado">
           <button class="btn-aux" id="identificarBtn"><i class="fas fa-check"></i> OK</button>
         </div>
       </div>
@@ -833,812 +936,13 @@
       </div>
     </div>
 
-    <!-- Card: Informações do Pai -->
-    <div class="info-card">
-      <h3><i class="fas fa-user-check"></i> Dados do responsável</h3>
-      <div class="grid-2col">
-        <div class="campo">
-          <label><i class="fas fa-user"></i> Nome</label>
-          <input type="text" id="nomePaiInput" value="Paulo Silva" placeholder="Nome completo">
-        </div>
-        <div class="campo">
-          <label><i class="fas fa-envelope"></i> E-mail</label>
-          <input type="email" id="emailPaiInput" value="paulo@email.com" placeholder="E-mail">
-        </div>
-        <div class="campo">
-          <label><i class="fas fa-phone"></i> Telefone</label>
-          <input type="text" id="telefonePaiInput" value="(11) 98765-4321" placeholder="Celular">
-        </div>
-        <div class="campo">
-          <label><i class="fas fa-id-card"></i> CPF</label>
-          <input type="text" id="cpfPaiInput" value="***.***.***-**" placeholder="CPF">
+    <!-- ===== IA ASSISTENTE ===== -->
+    <div class="ia-assistente">
+      <div class="ia-info">
+        <i class="fas fa-robot"></i>
+        <div>
+          <h4>🤖 Assistente IA · Guardião</h4>
+          <p>Dúvidas sobre controle parental, classificação indicativa ou ECA?</p>
         </div>
       </div>
-      <div style="margin-top: 0.8rem; display: flex; gap: 0.6rem; flex-wrap: wrap;">
-        <button class="btn-acao" id="salvarDadosBtn"><i class="fas fa-save"></i> Salvar dados</button>
-        <button class="btn-acao secundario" id="alterarSenhaBtn"><i class="fas fa-key"></i> Alterar senha</button>
-      </div>
-      <div id="feedbackSalvar" class="feedback-msg">
-        <i class="fas fa-check-circle"></i> Dados atualizados com segurança.
-      </div>
-    </div>
-
-    <!-- Card: Conexão e Monitoramento -->
-    <div class="info-card">
-      <h3><i class="fas fa-mobile-screen-button"></i> Monitoramento + Classificação Indicativa</h3>
-      <p style="color:#1a4a6a; margin-bottom:0.8rem; font-weight:500;">
-        <i class="fas fa-shield"></i> Acompanhe o que seus filhos consomem e bloqueie conteúdos inadequados.
-      </p>
-
-      <div id="listaFilhos">
-        <!-- Renderizado via JS -->
-      </div>
-
-      <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.6rem;">
-        <button class="btn-acao secundario" id="adicionarFilhoBtn"><i class="fas fa-plus-circle"></i> Adicionar filho</button>
-        <button class="btn-acao verde" id="sincronizarBtn"><i class="fas fa-rotate"></i> Sincronizar</button>
-        <button class="btn-acao" id="atualizarMonitoramentoBtn"><i class="fas fa-chart-line"></i> Atualizar dados</button>
-        <button class="btn-acao vermelho" id="bloquearTodosBtn"><i class="fas fa-ban"></i> Bloquear todos +18</button>
-      </div>
-    </div>
-
-    <div class="footer-painel">
-      <span><i class="fas fa-shield"></i> Proteção ECA ativa</span>
-      <span><i class="fas fa-clock"></i> Última atualização: <span id="ultimaAtualizacao">hoje 14:32</span></span>
-      <a id="sairPainelBtn"><i class="fas fa-sign-out-alt"></i> Sair do painel</a>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL para adicionar/conectar filho -->
-<div class="modal-overlay" id="modalConexao">
-  <div class="modal-box">
-    <h3><i class="fas fa-child"></i> <span id="modalTitulo">Conectar novo filho</span></h3>
-    <div class="campo">
-      <label><i class="fas fa-user"></i> Nome do filho</label>
-      <input type="text" id="modalNomeFilho" placeholder="Ex: João">
-    </div>
-    <div class="campo">
-      <label><i class="fas fa-calendar"></i> Idade</label>
-      <input type="number" id="modalIdadeFilho" placeholder="14" min="0" max="120">
-    </div>
-    <div class="campo">
-      <label><i class="fas fa-mobile"></i> Número do celular</label>
-      <input type="text" id="modalCelularFilho" placeholder="(11) 99999-9999" value="(11) 98888-7777">
-    </div>
-    <div class="campo">
-      <label><i class="fas fa-qrcode"></i> Código de pareamento</label>
-      <input type="text" id="modalCodigoPareamento" placeholder="Digite o código exibido no celular" value="ABC-123">
-    </div>
-    <div class="botoes-modal">
-      <button class="btn-acao" id="modalConectarBtn"><i class="fas fa-link"></i> Conectar</button>
-      <button class="btn-acao secundario" id="modalCancelarBtn"><i class="fas fa-times"></i> Cancelar</button>
-    </div>
-    <div id="modalFeedback" style="margin-top:0.6rem; font-weight:600; color:#b13e3e; display:none;"></div>
-  </div>
-</div>
-
-<script>
-  (function() {
-    "use strict";
-
-    // ===== ELEMENTOS =====
-    const loginArea = document.getElementById('loginArea');
-    const painelArea = document.getElementById('painelArea');
-    const erroMsg = document.getElementById('erroMsg');
-    const erroTexto = document.getElementById('erroTexto');
-
-    const emailCpfInput = document.getElementById('emailCpfInput');
-    const codigoInput = document.getElementById('codigoInput');
-    const identificarBtn = document.getElementById('identificarBtn');
-    const enviarCodigoBtn = document.getElementById('enviarCodigoBtn');
-    const loginBtn = document.getElementById('loginBtn');
-    const govBtn = document.getElementById('govBtn');
-
-    const listaFilhos = document.getElementById('listaFilhos');
-    const feedbackSalvar = document.getElementById('feedbackSalvar');
-    const sairPainelBtn = document.getElementById('sairPainelBtn');
-    const ultimaAtualizacao = document.getElementById('ultimaAtualizacao');
-
-    const modal = document.getElementById('modalConexao');
-    const modalTitulo = document.getElementById('modalTitulo');
-    const modalNomeFilho = document.getElementById('modalNomeFilho');
-    const modalIdadeFilho = document.getElementById('modalIdadeFilho');
-    const modalCelularFilho = document.getElementById('modalCelularFilho');
-    const modalCodigoPareamento = document.getElementById('modalCodigoPareamento');
-    const modalConectarBtn = document.getElementById('modalConectarBtn');
-    const modalCancelarBtn = document.getElementById('modalCancelarBtn');
-    const modalFeedback = document.getElementById('modalFeedback');
-
-    // ===== ESTADO =====
-    let usuarioLogado = false;
-
-    // Jogos com classificação indicativa
-    const jogosDisponiveis = [
-      { nome: 'Minecraft', classificacao: 'Livre' },
-      { nome: 'Roblox', classificacao: '10' },
-      { nome: 'Fortnite', classificacao: '12' },
-      { nome: 'Free Fire', classificacao: '14' },
-      { nome: 'Call of Duty', classificacao: '16' },
-      { nome: 'GTA V', classificacao: '18' },
-      { nome: 'The Last of Us', classificacao: '18' },
-      { nome: 'God of War', classificacao: '18' },
-      { nome: 'FIFA', classificacao: 'Livre' },
-      { nome: 'Valorant', classificacao: '16' },
-      { nome: 'League of Legends', classificacao: '12' },
-      { nome: 'Counter-Strike', classificacao: '16' }
-    ];
-
-    // Dados dos filhos com monitoramento e jogos
-    let filhos = [
-      {
-        id: 'ana',
-        nome: 'Ana',
-        idade: 12,
-        status: 'conectado',
-        celular: '(11) 97777-1111',
-        ultimoAcesso: '10:32',
-        appsUsados: ['Instagram', 'YouTube', 'WhatsApp'],
-        tempoTela: '2h 15m',
-        localizacao: 'Casa - Rua das Flores, 123',
-        jogosAcessados: [
-          { nome: 'Minecraft', classificacao: 'Livre' },
-          { nome: 'Roblox', classificacao: '10' }
-        ],
-        bloqueios: [],
-        classificacaoRestricao: 12
-      },
-      {
-        id: 'lucas',
-        nome: 'Lucas',
-        idade: 15,
-        status: 'pendente',
-        celular: '(11) 98888-2222',
-        ultimoAcesso: '09:15',
-        appsUsados: ['TikTok', 'Spotify', 'Free Fire'],
-        tempoTela: '3h 40m',
-        localizacao: 'Escola - Av. Principal, 456',
-        jogosAcessados: [
-          { nome: 'Free Fire', classificacao: '14' },
-          { nome: 'Fortnite', classificacao: '12' }
-        ],
-        bloqueios: [],
-        classificacaoRestricao: 14
-      },
-      {
-        id: 'sofia',
-        nome: 'Sofia',
-        idade: 8,
-        status: 'desconectado',
-        celular: '(11) 99999-3333',
-        ultimoAcesso: '07:50',
-        appsUsados: ['YouTube Kids', 'Desenho', 'Jogos'],
-        tempoTela: '1h 20m',
-        localizacao: 'Casa - Rua das Flores, 123',
-        jogosAcessados: [
-          { nome: 'Minecraft', classificacao: 'Livre' }
-        ],
-        bloqueios: [],
-        classificacaoRestricao: 10
-      }
-    ];
-
-    // ===== FUNÇÕES DE CLASSIFICAÇÃO =====
-    function getClassificacaoBadge(classificacao) {
-      const classes = {
-        'Livre': 'classificacao-livre',
-        '10': 'classificacao-10',
-        '12': 'classificacao-12',
-        '14': 'classificacao-14',
-        '16': 'classificacao-16',
-        '18': 'classificacao-18'
-      };
-      return classes[classificacao] || 'classificacao-restrito';
-    }
-
-    function getClassificacaoNumerica(classificacao) {
-      const map = {
-        'Livre': 0,
-        '10': 10,
-        '12': 12,
-        '14': 14,
-        '16': 16,
-        '18': 18
-      };
-      return map[classificacao] || 18;
-    }
-
-    function verificarBloqueioNecessario(filho, jogo) {
-      const idadeFilho = filho.idade;
-      const classJogo = getClassificacaoNumerica(jogo.classificacao);
-      const restricaoFilho = filho.classificacaoRestricao || 18;
-     
-      // Se a classificação do jogo for maior que a restrição do filho, deve bloquear
-      if (classJogo > restricaoFilho) {
-        return true;
-      }
-      return false;
-    }
-
-    function bloquearJogo(filhoId, jogoNome) {
-      const filho = filhos.find(f => f.id === filhoId);
-      if (!filho) return false;
-     
-      if (!filho.bloqueios) filho.bloqueios = [];
-     
-      // Verifica se já está bloqueado
-      if (filho.bloqueios.includes(jogoNome)) {
-        return false;
-      }
-     
-      filho.bloqueios.push(jogoNome);
-     
-      // Remove o jogo da lista de acessados
-      filho.jogosAcessados = filho.jogosAcessados.filter(j => j.nome !== jogoNome);
-     
-      return true;
-    }
-
-    function liberarJogo(filhoId, jogoNome) {
-      const filho = filhos.find(f => f.id === filhoId);
-      if (!filho) return false;
-     
-      if (!filho.bloqueios) filho.bloqueios = [];
-     
-      // Remove do bloqueio
-      filho.bloqueios = filho.bloqueios.filter(b => b !== jogoNome);
-     
-      // Encontra o jogo na lista geral para adicionar de volta
-      const jogoCompleto = jogosDisponiveis.find(j => j.nome === jogoNome);
-      if (jogoCompleto) {
-        filho.jogosAcessados.push(jogoCompleto);
-      }
-     
-      return true;
-    }
-
-    // ===== FUNÇÕES DE LOGIN =====
-    function mostrarErro(mensagem) {
-      erroTexto.textContent = mensagem;
-      erroMsg.classList.add('visible');
-    }
-
-    function ocultarErro() {
-      erroMsg.classList.remove('visible');
-    }
-
-    function abrirPainel() {
-      loginArea.classList.add('hidden');
-      painelArea.classList.add('visible');
-      usuarioLogado = true;
-      ocultarErro();
-      renderizarFilhos();
-      atualizarTimestamp();
-    }
-
-    function sairPainel() {
-      painelArea.classList.remove('visible');
-      loginArea.classList.remove('hidden');
-      usuarioLogado = false;
-      codigoInput.value = '';
-      ocultarErro();
-    }
-
-    function atualizarTimestamp() {
-      const agora = new Date();
-      const horas = String(agora.getHours()).padStart(2, '0');
-      const minutos = String(agora.getMinutes()).padStart(2, '0');
-      ultimaAtualizacao.textContent = `hoje ${horas}:${minutos}`;
-    }
-
-    // ===== FUNÇÕES DO PAINEL =====
-    function renderizarFilhos() {
-      const container = document.getElementById('listaFilhos');
-      container.innerHTML = '';
-     
-      filhos.forEach(f => {
-        const div = document.createElement('div');
-        div.className = 'filho-item';
-
-        let statusClass = 'desconectado';
-        let statusIcon = '<i class="fas fa-circle-xmark"></i>';
-        let statusText = 'Desconectado';
-        if (f.status === 'conectado') {
-          statusClass = 'conectado';
-          statusIcon = '<i class="fas fa-wifi"></i>';
-          statusText = 'Conectado';
-        } else if (f.status === 'pendente') {
-          statusClass = 'pendente';
-          statusIcon = '<i class="fas fa-clock"></i>';
-          statusText = 'Pendente';
-        } else if (f.status === 'bloqueado') {
-          statusClass = 'bloqueado';
-          statusIcon = '<i class="fas fa-ban"></i>';
-          statusText = 'Bloqueado';
-        }
-
-        let botoes = '';
-        if (f.status === 'conectado') {
-          botoes = `<button class="btn-pequeno danger" data-filho="${f.id}" data-acao="desconectar"><i class="fas fa-link"></i> Desconectar</button>`;
-        } else if (f.status === 'pendente' || f.status === 'desconectado' || f.status === 'bloqueado') {
-          botoes = `<button class="btn-pequeno verde" data-filho="${f.id}" data-acao="conectar"><i class="fas fa-plug"></i> Conectar</button>`;
-        }
-
-        // Jogos com classificação
-        let jogosHtml = '';
-        if (f.jogosAcessados && f.jogosAcessados.length > 0) {
-          jogosHtml = f.jogosAcessados.map(jogo => {
-            const badgeClass = getClassificacaoBadge(jogo.classificacao);
-            const precisaBloquear = verificarBloqueioNecessario(f, jogo);
-            const estaBloqueado = f.bloqueios && f.bloqueios.includes(jogo.nome);
-           
-            let acaoBtn = '';
-            if (precisaBloquear || estaBloqueado) {
-              if (estaBloqueado) {
-                acaoBtn = `<button class="btn-pequeno liberar" data-filho="${f.id}" data-jogo="${jogo.nome}" data-acao="liberar"><i class="fas fa-unlock"></i> Liberar</button>`;
-              } else {
-                acaoBtn = `<button class="btn-pequeno bloqueio" data-filho="${f.id}" data-jogo="${jogo.nome}" data-acao="bloquear"><i class="fas fa-lock"></i> Bloquear</button>`;
-              }
-            } else {
-              acaoBtn = `<span style="font-size:0.65rem; color:#1e7e34;"><i class="fas fa-check-circle"></i> Permitido</span>`;
-            }
-           
-            return `<span class="jogo-item">
-              ${jogo.nome}
-              <span class="classificacao-badge ${badgeClass}">${jogo.classificacao}</span>
-              ${acaoBtn}
-            </span>`;
-          }).join(' ');
-        } else {
-          jogosHtml = '<span style="font-size:0.7rem; color:#6f8fa8;">Nenhum jogo acessado</span>';
-        }
-
-        // Bloqueios ativos
-        let bloqueiosHtml = '';
-        if (f.bloqueios && f.bloqueios.length > 0) {
-          bloqueiosHtml = `<span style="font-size:0.7rem; color:#b13e3e;"><i class="fas fa-ban"></i> Bloqueados: ${f.bloqueios.join(', ')}</span>`;
-        }
-
-        // Classificação restrição do filho
-        const restricaoLabel = f.classificacaoRestricao ? `+${f.classificacaoRestricao}` : 'Livre';
-
-        div.innerHTML = `
-          <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; width:100%;">
-            <div class="info-filho">
-              <i class="fas fa-child"></i>
-              <div class="detalhes">
-                <span class="nome-idade">${f.nome} <small>(${f.idade} anos) • Restrição: ${restricaoLabel}</small></span>
-                <span style="font-size:0.7rem; color:#1a4a6a;"><i class="fas fa-phone"></i> ${f.celular || 'N/A'}</span>
-              </div>
-            </div>
-            <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
-              <span class="status ${statusClass}">${statusIcon} ${statusText}</span>
-              ${botoes}
-            </div>
-          </div>
-          <div class="monitoramento-dados" style="flex-direction:column; gap:0.3rem;">
-            <div style="display:flex; flex-wrap:wrap; gap:0.5rem 1rem; width:100%;">
-              <span><i class="fas fa-clock"></i> Último acesso: ${f.ultimoAcesso || '--'}</span>
-              <span><i class="fas fa-mobile-screen"></i> Apps: ${(f.appsUsados || ['Nenhum']).join(', ')}</span>
-              <span class="dado-destaque"><i class="fas fa-hourglass-half"></i> Tempo tela: ${f.tempoTela || '--'}</span>
-              <span><i class="fas fa-location-dot"></i> ${f.localizacao || '--'}</span>
-            </div>
-            <div style="display:flex; flex-wrap:wrap; gap:0.3rem; align-items:center; width:100%; padding-top:0.3rem; border-top:1px dashed #d0e0ed;">
-              <span style="font-weight:600; font-size:0.75rem; color:#0b3857;"><i class="fas fa-gamepad"></i> Jogos acessados:</span>
-              ${jogosHtml}
-            </div>
-            ${bloqueiosHtml ? `<div style="width:100%;">${bloqueiosHtml}</div>` : ''}
-          </div>
-        `;
-        container.appendChild(div);
-      });
-
-      // Eventos dos botões
-      document.querySelectorAll('#listaFilhos .btn-pequeno').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          const filhoId = this.dataset.filho;
-          const acao = this.dataset.acao;
-          const jogo = this.dataset.jogo;
-         
-          if (acao === 'conectar') {
-            abrirModalParaConectar(filhoId);
-          } else if (acao === 'desconectar') {
-            desconectarFilho(filhoId);
-          } else if (acao === 'bloquear' && jogo) {
-            handleBloquearJogo(filhoId, jogo);
-          } else if (acao === 'liberar' && jogo) {
-            handleLiberarJogo(filhoId, jogo);
-          }
-        });
-      });
-    }
-
-    function handleBloquearJogo(filhoId, jogoNome) {
-      const filho = filhos.find(f => f.id === filhoId);
-      if (!filho) return;
-     
-      if (confirm(`Deseja bloquear o jogo "${jogoNome}" para ${filho.nome}?`)) {
-        const sucesso = bloquearJogo(filhoId, jogoNome);
-        if (sucesso) {
-          mostrarFeedbackPainel(`🔒 Jogo "${jogoNome}" bloqueado para ${filho.nome}.`);
-          renderizarFilhos();
-          atualizarTimestamp();
-        } else {
-          mostrarFeedbackPainel(`⚠️ Jogo já está bloqueado.`, true);
-        }
-      }
-    }
-
-    function handleLiberarJogo(filhoId, jogoNome) {
-      const filho = filhos.find(f => f.id === filhoId);
-      if (!filho) return;
-     
-      if (confirm(`Deseja liberar o jogo "${jogoNome}" para ${filho.nome}?`)) {
-        const sucesso = liberarJogo(filhoId, jogoNome);
-        if (sucesso) {
-          mostrarFeedbackPainel(`✅ Jogo "${jogoNome}" liberado para ${filho.nome}.`);
-          renderizarFilhos();
-          atualizarTimestamp();
-        } else {
-          mostrarFeedbackPainel(`⚠️ Erro ao liberar o jogo.`, true);
-        }
-      }
-    }
-
-    function atualizarStatusFilho(id, novoStatus) {
-      const filho = filhos.find(f => f.id === id);
-      if (filho) {
-        filho.status = novoStatus;
-        if (novoStatus === 'conectado') {
-          const agora = new Date();
-          filho.ultimoAcesso = `${String(agora.getHours()).padStart(2, '0')}:${String(agora.getMinutes()).padStart(2, '0')}`;
-          // Adiciona alguns jogos aleatórios
-          const numJogos = Math.floor(Math.random() * 3) + 1;
-          const jogosSelecionados = [];
-          const shuffled = [...jogosDisponiveis].sort(() => 0.5 - Math.random());
-          for (let i = 0; i < Math.min(numJogos, shuffled.length); i++) {
-            jogosSelecionados.push(shuffled[i]);
-          }
-          filho.jogosAcessados = jogosSelecionados;
-         
-          // Verifica bloqueios automáticos
-          filho.bloqueios = [];
-          filho.jogosAcessados.forEach(jogo => {
-            if (verificarBloqueioNecessario(filho, jogo)) {
-              filho.bloqueios.push(jogo.nome);
-            }
-          });
-          // Remove jogos bloqueados da lista de acessados
-          filho.jogosAcessados = filho.jogosAcessados.filter(j => !filho.bloqueios.includes(j.nome));
-        }
-        renderizarFilhos();
-        const msgs = {
-          'conectado': '✅ Conectado! Monitoramento ativo e classificação verificada.',
-          'desconectado': '🔌 Desconectado com segurança.',
-          'pendente': '⏳ Conexão pendente. Aguardando confirmação.'
-        };
-        mostrarFeedbackPainel(msgs[novoStatus] || 'Status atualizado.');
-        atualizarTimestamp();
-      }
-    }
-
-    function desconectarFilho(id) {
-      const filho = filhos.find(f => f.id === id);
-      if (confirm(`Deseja realmente desconectar o dispositivo de ${filho?.nome}?`)) {
-        atualizarStatusFilho(id, 'desconectado');
-      }
-    }
-
-    function abrirModalParaConectar(filhoId = null) {
-      modal.classList.add('ativo');
-      modalFeedback.style.display = 'none';
-
-      if (filhoId) {
-        const filho = filhos.find(f => f.id === filhoId);
-        if (filho) {
-          modalTitulo.textContent = `Conectar ${filho.nome}`;
-          modalNomeFilho.value = filho.nome;
-          modalIdadeFilho.value = filho.idade;
-          modalCelularFilho.value = filho.celular || '';
-          modalCodigoPareamento.value = 'ABC-' + String(Math.floor(100 + Math.random() * 900));
-          modalConectarBtn.dataset.filhoId = filhoId;
-          modalConectarBtn.dataset.modo = 'existente';
-        }
-      } else {
-        modalTitulo.textContent = 'Adicionar e conectar novo filho';
-        modalNomeFilho.value = '';
-        modalIdadeFilho.value = '';
-        modalCelularFilho.value = '(11) 9';
-        modalCodigoPareamento.value = 'ABC-' + String(Math.floor(100 + Math.random() * 900));
-        modalConectarBtn.dataset.filhoId = '';
-        modalConectarBtn.dataset.modo = 'novo';
-      }
-    }
-
-    function fecharModal() {
-      modal.classList.remove('ativo');
-      modalFeedback.style.display = 'none';
-    }
-
-    function conectarFilho() {
-      const nome = modalNomeFilho.value.trim();
-      const idade = parseInt(modalIdadeFilho.value);
-      const celular = modalCelularFilho.value.trim();
-      const codigo = modalCodigoPareamento.value.trim();
-      const modo = modalConectarBtn.dataset.modo;
-      const filhoId = modalConectarBtn.dataset.filhoId;
-
-      if (!nome || nome.length < 2) {
-        modalFeedback.textContent = '⚠️ Digite o nome do filho.';
-        modalFeedback.style.display = 'block';
-        return;
-      }
-      if (isNaN(idade) || idade < 0 || idade > 120) {
-        modalFeedback.textContent = '⚠️ Idade inválida (0-120).';
-        modalFeedback.style.display = 'block';
-        return;
-      }
-      if (!codigo || codigo.length < 4) {
-        modalFeedback.textContent = '⚠️ Código de pareamento inválido.';
-        modalFeedback.style.display = 'block';
-        return;
-      }
-      if (!codigo.startsWith('ABC-')) {
-        modalFeedback.textContent = '⚠️ Código inválido. Formato esperado: ABC-XXX';
-        modalFeedback.style.display = 'block';
-        return;
-      }
-
-      // Determina restrição baseada na idade
-      let restricao = 18;
-      if (idade < 10) restricao = 10;
-      else if (idade < 12) restricao = 12;
-      else if (idade < 14) restricao = 14;
-      else if (idade < 16) restricao = 16;
-      else restricao = 18;
-
-      if (modo === 'novo') {
-        const novoId = nome.toLowerCase().replace(/\s/g, '') + Date.now();
-        const agora = new Date();
-        filhos.push({
-          id: novoId,
-          nome: nome,
-          idade: idade,
-          status: 'pendente',
-          celular: celular || '(11) 9XXXX-XXXX',
-          ultimoAcesso: `${String(agora.getHours()).padStart(2, '0')}:${String(agora.getMinutes()).padStart(2, '0')}`,
-          appsUsados: ['Aguardando dados...'],
-          tempoTela: '--',
-          localizacao: 'Aguardando localização...',
-          jogosAcessados: [],
-          bloqueios: [],
-          classificacaoRestricao: restricao
-        });
-        renderizarFilhos();
-        setTimeout(() => {
-          atualizarStatusFilho(novoId, 'conectado');
-        }, 1500);
-        fecharModal();
-        mostrarFeedbackPainel(`✅ ${nome} adicionado e conectado com segurança!`);
-        atualizarTimestamp();
-        return;
-      }
-
-      if (filhoId) {
-        const filho = filhos.find(f => f.id === filhoId);
-        if (filho) {
-          filho.classificacaoRestricao = restricao;
-        }
-        atualizarStatusFilho(filhoId, 'conectado');
-        fecharModal();
-        mostrarFeedbackPainel(`✅ ${nome} conectado com sucesso!`);
-        atualizarTimestamp();
-        return;
-      }
-
-      modalFeedback.textContent = '⚠️ Erro inesperado. Tente novamente.';
-      modalFeedback.style.display = 'block';
-    }
-
-    function mostrarFeedbackPainel(msg, erro = false) {
-      feedbackSalvar.textContent = msg;
-      feedbackSalvar.classList.add('visible');
-      if (erro) {
-        feedbackSalvar.classList.add('erro');
-      } else {
-        feedbackSalvar.classList.remove('erro');
-      }
-      setTimeout(() => {
-        feedbackSalvar.classList.remove('visible');
-      }, 4000);
-    }
-
-    // ===== EVENTOS DE LOGIN =====
-    identificarBtn.addEventListener('click', function() {
-      const valor = emailCpfInput.value.trim();
-      if (valor.length < 3) {
-        mostrarErro('Digite um e-mail ou CPF válido.');
-        return;
-      }
-      ocultarErro();
-      enviarCodigoBtn.textContent = '✅ Enviar';
-      setTimeout(() => { enviarCodigoBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar'; }, 1500);
-      mostrarErro('Identificação aceita. Clique em "Enviar" para receber o código.');
-      setTimeout(ocultarErro, 2000);
-    });
-
-    enviarCodigoBtn.addEventListener('click', function() {
-      const identificacao = emailCpfInput.value.trim();
-      if (identificacao.length < 3) {
-        mostrarErro('Identifique-se primeiro (e-mail ou CPF).');
-        return;
-      }
-      const codigo = String(Math.floor(100000 + Math.random() * 900000));
-      codigoInput.value = codigo;
-      alert(`📲 Código enviado por SMS/WhatsApp para ${identificacao}:\n\n${codigo}\n\n(Simulação segura)`);
-      ocultarErro();
-    });
-
-    loginBtn.addEventListener('click', function() {
-      const identificacao = emailCpfInput.value.trim();
-      const codigo = codigoInput.value.trim();
-
-      if (identificacao.length < 3) {
-        mostrarErro('Digite e-mail ou CPF para identificação.');
-        return;
-      }
-      if (codigo.length < 4) {
-        mostrarErro('Insira o código temporário recebido.');
-        return;
-      }
-      if (!/^\d{6}$/.test(codigo)) {
-        mostrarErro('Código inválido. Deve conter 6 dígitos.');
-        return;
-      }
-
-      ocultarErro();
-      abrirPainel();
-    });
-
-    govBtn.addEventListener('click', function() {
-      const confirmar = confirm('🔐 Redirecionando para autenticação Gov.br...\n\nSimulação: clique em OK para confirmar identidade adulta.');
-      if (confirmar) {
-        ocultarErro();
-        abrirPainel();
-      } else {
-        mostrarErro('Autenticação Gov.br cancelada.');
-      }
-    });
-
-    // ===== EVENTOS DO PAINEL =====
-    document.getElementById('salvarDadosBtn').addEventListener('click', function() {
-      const nome = document.getElementById('nomePaiInput').value.trim();
-      const email = document.getElementById('emailPaiInput').value.trim();
-      if (nome.length < 3 || email.length < 3) {
-        mostrarFeedbackPainel('⚠️ Preencha nome e e-mail corretamente.', true);
-        return;
-      }
-      mostrarFeedbackPainel('✅ Dados salvos com segurança!');
-    });
-
-    document.getElementById('alterarSenhaBtn').addEventListener('click', function() {
-      const nova = prompt('🔐 Alterar senha:\nDigite a nova senha (mínimo 6 caracteres):');
-      if (nova && nova.length >= 6) {
-        mostrarFeedbackPainel('✅ Senha alterada com sucesso!');
-      } else if (nova !== null) {
-        mostrarFeedbackPainel('⚠️ Senha deve ter pelo menos 6 caracteres.', true);
-      }
-    });
-
-    document.getElementById('adicionarFilhoBtn').addEventListener('click', function() {
-      abrirModalParaConectar(null);
-    });
-
-    document.getElementById('sincronizarBtn').addEventListener('click', function() {
-      mostrarFeedbackPainel('🔄 Sincronizando dispositivos...');
-      setTimeout(() => {
-        filhos.forEach(f => {
-          if (f.status === 'pendente') {
-            f.status = 'conectado';
-            const agora = new Date();
-            f.ultimoAcesso = `${String(agora.getHours()).padStart(2, '0')}:${String(agora.getMinutes()).padStart(2, '0')}`;
-          }
-        });
-        renderizarFilhos();
-        mostrarFeedbackPainel('✅ Sincronização concluída.');
-        atualizarTimestamp();
-      }, 1500);
-    });
-
-    document.getElementById('atualizarMonitoramentoBtn').addEventListener('click', function() {
-      mostrarFeedbackPainel('🔄 Atualizando dados de monitoramento...');
-      setTimeout(() => {
-        const agora = new Date();
-        filhos.forEach(f => {
-          if (f.status === 'conectado') {
-            f.ultimoAcesso = `${String(agora.getHours()).padStart(2, '0')}:${String(agora.getMinutes()).padStart(2, '0')}`;
-            const apps = ['Instagram', 'YouTube', 'WhatsApp', 'TikTok', 'Spotify', 'Free Fire', 'YouTube Kids', 'Jogos', 'Netflix', 'Snapchat'];
-            f.appsUsados = [apps[Math.floor(Math.random() * apps.length)], apps[Math.floor(Math.random() * apps.length)]];
-            f.tempoTela = `${Math.floor(Math.random() * 4)}h ${Math.floor(Math.random() * 60)}m`;
-            const locais = ['Casa - Rua das Flores', 'Escola - Av. Principal', 'Parque - Praça Central', 'Casa da Vovó', 'Shopping'];
-            f.localizacao = locais[Math.floor(Math.random() * locais.length)];
-           
-            // Atualiza jogos
-            const numJogos = Math.floor(Math.random() * 3) + 1;
-            const shuffled = [...jogosDisponiveis].sort(() => 0.5 - Math.random());
-            const novosJogos = [];
-            for (let i = 0; i < Math.min(numJogos, shuffled.length); i++) {
-              novosJogos.push(shuffled[i]);
-            }
-            f.jogosAcessados = novosJogos;
-            f.bloqueios = [];
-            f.jogosAcessados.forEach(jogo => {
-              if (verificarBloqueioNecessario(f, jogo)) {
-                f.bloqueios.push(jogo.nome);
-              }
-            });
-            f.jogosAcessados = f.jogosAcessados.filter(j => !f.bloqueios.includes(j.nome));
-          }
-        });
-        renderizarFilhos();
-        mostrarFeedbackPainel('✅ Dados de monitoramento atualizados!');
-        atualizarTimestamp();
-      }, 1200);
-    });
-
-    document.getElementById('bloquearTodosBtn').addEventListener('click', function() {
-      if (confirm('Deseja bloquear todos os jogos com classificação +18 para todos os filhos?')) {
-        let count = 0;
-        filhos.forEach(f => {
-          if (f.status === 'conectado') {
-            const jogosParaBloquear = f.jogosAcessados.filter(j =>
-              getClassificacaoNumerica(j.classificacao) > (f.classificacaoRestricao || 18)
-            );
-            jogosParaBloquear.forEach(j => {
-              if (bloquearJogo(f.id, j.nome)) count++;
-            });
-          }
-        });
-        renderizarFilhos();
-        mostrarFeedbackPainel(`✅ ${count} jogos bloqueados para todos os filhos.`);
-        atualizarTimestamp();
-      }
-    });
-
-    sairPainelBtn.addEventListener('click', function() {
-      if (confirm('Deseja realmente sair do painel?')) {
-        alert('🔐 Logout realizado. Sua sessão foi encerrada com segurança.');
-        sairPainel();
-      }
-    });
-
-    // ===== EVENTOS DO MODAL =====
-    modalConectarBtn.addEventListener('click', conectarFilho);
-    modalCancelarBtn.addEventListener('click', fecharModal);
-
-    modal.addEventListener('click', function(e) {
-      if (e.target === this) fecharModal();
-    });
-
-    modalNomeFilho.addEventListener('keydown', (e) => { if (e.key === 'Enter') modalConectarBtn.click(); });
-    modalIdadeFilho.addEventListener('keydown', (e) => { if (e.key === 'Enter') modalConectarBtn.click(); });
-    modalCodigoPareamento.addEventListener('keydown', (e) => { if (e.key === 'Enter') modalConectarBtn.click(); });
-
-    // Enter no login
-    emailCpfInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') identificarBtn.click(); });
-    codigoInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') loginBtn.click(); });
-
-    // ===== INICIALIZAÇÃO =====
-    window.addEventListener('DOMContentLoaded', function() {
-      loginArea.classList.remove('hidden');
-      painelArea.classList.remove('visible');
-      emailCpfInput.value = 'pai@exemplo.com';
-      codigoInput.value = '123456';
-      ocultarErro();
-    });
-
-  })();
-</script>
-</body>
-</html>
+      <
